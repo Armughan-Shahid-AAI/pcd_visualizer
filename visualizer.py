@@ -37,7 +37,9 @@ def main(args):
     front_camera = camera_dict[args.camera_type]
     detected_cuboids = None if args.predictions_file == "" else np.load(pred_3d_boxes_file).item()
     fig = process_frame(0, args.point_cloud_file, args.img_file, front_lidar, front_camera, show_fig=args.visualize)
-    output_path = os.path.join(args.output_dir, os.path.splitext(os.path.basename(args.point_cloud_file))[0])
+    output_path = os.path.splitext(os.path.basename(args.point_cloud_file))[0]
+    output_path += "_cam_type_" + args.camera_type + "_lidar_type_" + args.lidar_type + ".png"
+    output_path = os.path.join(args.output_dir, output_path)
     fig.savefig(output_path)
 
 if __name__ == '__main__':
