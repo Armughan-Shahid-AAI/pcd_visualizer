@@ -79,7 +79,7 @@ def filter_pcl_generic(lidar_pcl: dict, datatype: str = 'points', axis=0, filter
 
 def project_to_cam_frame(points3d, camera_sensor: CameraSensor, use_distortion: int = 0):
     projected_pts, jacobian = cv2.projectPoints(
-        points3d.T,
+        points3d,
         (0, 0, 0), (0, 0, 0),
         np.asarray(camera_sensor.cam_matrix_original),
         np.asarray(camera_sensor.distortion) * use_distortion,
