@@ -193,7 +193,7 @@ def process_frame(img_idx, lidar_frame_path, image_frame_path, front_lidar, fron
     )
 
     # 3. filter
-    T_lidar_data = filter_pcl(T_lidar_data, axis=0, filter_val=0)
+    # T_lidar_data = filter_pcl(T_lidar_data, axis=0, filter_val=0)
 
     # 4. align
     points_3d = np.array(change_axes(T_lidar_data['points']))
